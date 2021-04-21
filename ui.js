@@ -24,4 +24,33 @@ class UI {
             </div>
         `
     }
+
+    showAlert(message, className) {
+
+        this.clearAlert()
+        const searchContainer = document.querySelector('.search-container')
+        const searchCard = document.querySelector('.search-card')
+
+        const div = document.createElement('div')
+        div.className = className
+        div.appendChild(document.createTextNode(message))
+
+        searchContainer.insertBefore(div, searchCard)
+        // Timeout after 3 secs
+        setTimeout(() => {
+            this.clearAlert()
+        }, 3000)
+        
+    }
+
+    clearAlert() {
+        const currentAlert = document.querySelector('.alert')
+        if (currentAlert) {
+            currentAlert.remove()
+        }
+    }
+
+    clearProfile() {
+        this.profile.innerHTML = ''
+    }
 }

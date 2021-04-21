@@ -11,10 +11,12 @@ searchUser.addEventListener('keyup', (e) => {
     if (userText !== '') {
         github.getUser(userText).then((data) => {
             if (data.profile.message === 'Not Found') {
-                alert('User Not Found')
+                ui.showAlert('User not found', 'alert')
             } else {
                 ui.showProfile(data.profile)
             }
         })
+    } else {
+        ui.clearProfile()
     }
 })
